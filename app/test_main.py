@@ -67,4 +67,4 @@ def test_bad_update_todo():
         headers={"X-Token": "password"},
         json={"id": 0, "text": "Bad update", "completed": False},
     )
-    assert response.status_code == 400
+    assert response.status_code == 404
