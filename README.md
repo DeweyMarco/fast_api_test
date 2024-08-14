@@ -12,10 +12,8 @@ This project is a simple REST API for managing to-do items built with FastAPI
 
 ### API Endpoints
 
-    GET /todos: Retrieve a list of all to-do items.
-    POST /todos: Create a new to-do item. The request body should be a JSON object with the following properties:
-        text: The text of the to-do item.
-        completed (optional): A boolean flag indicating if the item is completed (default: False).
+    GET /todos/: Retrieve a list of all to-do items.
+    POST /todos/: Create a new to-do item. The request body should be a 
     GET /todos/{todo_id}: Get a specific to-do item by its ID.
     PUT /todos/{todo_id}: Update a to-do item with the provided data in the request body.
     DELETE /todos/{todo_id}: Delete a to-do item by its ID.
