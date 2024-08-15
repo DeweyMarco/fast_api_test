@@ -18,7 +18,16 @@ This project is a simple REST API for managing to-do items built with FastAPI
     PUT /todos/{todo_id}: Update a to-do item with the provided data in the request body.
     DELETE /todos/{todo_id}: Delete a to-do item by its ID.
 
-### Testing
+## Testing
+
+### Notes
+When writing test cases with pytest for an API one should note that the API is only instated once so if your individual test file must assume that there is nothing in the to-do list and it must finish testing with nothing in the to-do list. 
+
+Otherwise unintended errors may trigger in other test files.
+
+Further test files should be checked to verify that function names are not duplicated.
+
+### Running Tests
 Run all tests
 ```
 $ pytest
