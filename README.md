@@ -19,6 +19,17 @@ This project is a simple REST API for managing to-do items built with FastAPI
     DELETE /todos/{todo_id}: Delete a to-do item by its ID.
 
 ### Testing
+Run all tests
 ```
-pytest
+$ pytest
+```
+
+Run a spesific test file
+```
+$ pytest [path to file]
+```
+
+For example
+```
+$ pytest app/test_bad_token.py
 ```

@@ -5,11 +5,7 @@ import uvicorn
 
 token = "password"
 
-db = {
-    1: {"id": 1, "text": "Buy groceries", "completed": False},
-    2: {"id": 2, "text": "Learn Python", "completed": False},
-    3: {"id": 3, "text": "Build a REST API", "completed": False},
-}
+db = {}
 
 app = FastAPI()
 
@@ -40,7 +36,7 @@ async def create_todo(item: Todo, x_token: Annotated[str, Header()]):
     if x_token != token:
         raise HTTPException(status_code=400, detail="Invalid X-Token header")
     if item.id in db:
-        raise HTTPException(status_code=400, detail="Item already exists")
+        raise HTTPException(status_code=401, detail="Item already exists")
     db[item.id] = item
     return item
 
@@ -61,5 +57,7 @@ async def update_todo(item_id: int, updated_item: Todo, x_token: Annotated[str, 
         raise HTTPException(status_code=400, detail="Invalid X-Token header")
     if item_id not in db:
         raise HTTPException(status_code=404, detail="Item not found")
+    if updated_item.id != item_id and updated_item.id in db:
+        raise HTTPException(status_code=401, detail="Item ID already in use")
     db[item_id] = updated_item
     return updated_item
