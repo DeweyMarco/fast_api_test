@@ -123,7 +123,9 @@ def test_update_bad_id():
         json={"id": 2, "text": "Buy groceries", "completed": False},
     )
     assert response.status_code == 401
-    assert response.json() == {"detail": "Item ID already in use"}
+    assert response.json() == {
+        "detail": "Item ID already in use"
+    }
     
 # Test posting with an id already in the to-do list
 def test_create_bad_todo():
@@ -133,7 +135,9 @@ def test_create_bad_todo():
         json={"id": 1, "text": "Add an second item", "completed": False},
     )
     assert response.status_code == 401
-    assert response.json() == {"detail": "Item already exists"}
+    assert response.json() == {
+        "detail": "Item ID already in use"
+    }
     
 # Test delete the third item in the to-do list
 def test_delete_3():
@@ -142,7 +146,9 @@ def test_delete_3():
         headers={"X-Token": "password"},
     )
     assert response.status_code == 200
-    assert response.json() == {"message": "Item deleted"}
+    assert response.json() == {
+        "message": "Item deleted"
+    }
 
 # Test add a item with id #4
 def test_create_todo_4():
@@ -197,7 +203,9 @@ def test_delete_1():
         headers={"X-Token": "password"},
     )
     assert response.status_code == 200
-    assert response.json() == {"message": "Item deleted"}
+    assert response.json() == {
+        "message": "Item deleted"
+    }
     
 # Test deleting if the to-do list is not empty
 def test_delete_2():
@@ -206,7 +214,9 @@ def test_delete_2():
         headers={"X-Token": "password"},
     )
     assert response.status_code == 200
-    assert response.json() == {"message": "Item deleted"}
+    assert response.json() == {
+        "message": "Item deleted"
+    }
     
 # Test deleting if the to-do list is not empty
 def test_delete_new_3():
@@ -215,7 +225,9 @@ def test_delete_new_3():
         headers={"X-Token": "password"},
     )
     assert response.status_code == 200
-    assert response.json() == {"message": "Item deleted"}
+    assert response.json() == {
+        "message": "Item deleted"
+    }
     
 # Test deleting if the to-do list is not empty
 def test_delete_4():
@@ -224,7 +236,9 @@ def test_delete_4():
         headers={"X-Token": "password"},
     )
     assert response.status_code == 200
-    assert response.json() == {"message": "Item deleted"}
+    assert response.json() == {
+        "message": "Item deleted"
+    }
     
 # Test if the to-do list is empty at initiation
 def test_empty():

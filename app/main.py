@@ -36,7 +36,7 @@ async def create_todo(item: Todo, x_token: Annotated[str, Header()]):
     if x_token != token:
         raise HTTPException(status_code=400, detail="Invalid X-Token header")
     if item.id in db:
-        raise HTTPException(status_code=401, detail="Item already exists")
+        raise HTTPException(status_code=401, detail="Item ID already in use")
     db[item.id] = item
     return item
 
